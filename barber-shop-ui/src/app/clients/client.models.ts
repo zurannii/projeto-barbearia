@@ -11,3 +11,10 @@ export interface ClientModelTable {
     email: string
     phone: string
 }
+
+export interface ClientModelForm {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+  }

@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { NgxMaskDirective } from 'ngx-mask';
 import { ClientModelForm } from '../../client.models';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,6 +23,7 @@ export class ClientFormComponent {
   @Output() clientSubmited = new EventEmitter<ClientModelForm>();
 
   onSubmit(_: NgForm) {
+    console.log(this.client)
     this.clientSubmited.emit(this.client)
   }
 
