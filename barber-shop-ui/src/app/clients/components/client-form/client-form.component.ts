@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
 ],
   templateUrl: './client-form.component.html',
-  styleUrl: './client-form.component.scss'
+  styleUrl: './client-form.component.css'
 })
 export class ClientFormComponent {
 
