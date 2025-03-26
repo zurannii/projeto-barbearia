@@ -1,29 +1,30 @@
-// filepath: c:\Users\zuran\projeto-barbearia-angular\projeto-barbearia\barber-shop-ui\src\app\clients\components\client-table\client-table.component.ts
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { DataSource } from '@angular/cdk/collections';
+import { AfterViewInit, Component, EventEmitter, Inject, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ClientModelTable } from '../../client.models';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
+import { SERVICES_TOKEN } from '../../../services/service.token';
+import { IDialogManagerService } from '../../../services/idialog-manager.service';
+import { DialogManagerService } from '../../../services/dialog-manager.service';
+import { YesNoDialogComponent } from '../../../commons/components/yes-no-dialog/yes-no-dialog.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { CustomPaginator } from './custom-paginator';
+
 
 @Component({
   selector: 'app-client-table',
-  standalone: true,
-  imports: [
-    MatPaginatorModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTooltipModule
-  ],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatTooltipModule],
   templateUrl: './client-table.component.html',
-  styleUrls: ['./client-table.component.css']
+  styleUrl: './client-table.component.css',
+  providers: [
+    { provide: SERVICES_TOKEN.DIALOG, useClass: DialogManagerService },
+    { provide: MatPaginatorIntl, useClass: CustomPaginator }
+  ]
 })
-export class ClientTableComponent {
-  
+export class ClientTableComponent implements AfterViewInit, OnChanges, OnDestroy {
+
   @Input() clients: ClientModelTable[] = []
 
   dataSource!: MatTableDataSource<ClientModelTable>
@@ -37,19 +38,48 @@ export class ClientTableComponent {
   @Output() onConfirmDelete = new EventEmitter<ClientModelTable>()
 
   @Output() onRequestUpdate = new EventEmitter<ClientModelTable>()
-  
 
+  constructor(
+    @Inject(SERVICES_TOKEN.DIALOG) private readonly dialogManagerService: IDialogManagerService,
+  ) { }
 
-  formatPhone(phone: string): string {
-    
-    return phone;
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['clients'] && this.clients) {
+      this.dataSource = new MatTableDataSource<ClientModelTable>(this.clients)
+      if (this.paginator) {
+        this.dataSource.paginator = this.paginator
+      }
+    }
+  }
+  ngOnDestroy(): void {
+    if (this.dialogManagerServiceSubscriptions) {
+      this.dialogManagerServiceSubscriptions.unsubscribe()
+    }
   }
 
-  delete(client: any): void {
-    console.log('Excluir cliente:', client);
+  formatPhone(phone: string) {
+    return `( ${phone.substring(0, 2)} ) ${phone.substring(2, 7)} - ${phone.substring(7)}`
   }
 
-  update(client: any): void {
-    console.log('Atualizar cliente:', client);
+  update(client: ClientModelTable) {
+    this.onRequestUpdate.emit(client)
   }
+
+  delete(client: ClientModelTable) {
+    this.dialogManagerService.showYesNoDialog(
+      YesNoDialogComponent,
+      { title: 'Exclusão de cliente', content: `Confirma a exclusão do cliente ${client.name}` }
+    )
+      .subscribe(result => {
+        if (result) {
+          this.onConfirmDelete.emit(client)
+          const updatedList = this.dataSource.data.filter(c => c.id !== client.id)
+          this.dataSource = new MatTableDataSource<ClientModelTable>(updatedList)
+        }
+      })
+  }
+
 }

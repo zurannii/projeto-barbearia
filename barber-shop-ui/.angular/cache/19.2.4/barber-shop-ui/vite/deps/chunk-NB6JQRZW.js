@@ -5,30 +5,6 @@ import {
   ɵɵdefineNgModule
 } from "./chunk-N2APCJKI.js";
 
-// node_modules/@angular/cdk/fesm2022/css-pixel-value-286c9a60.mjs
-function coerceCssPixelValue(value) {
-  if (value == null) {
-    return "";
-  }
-  return typeof value === "string" ? value : `${value}px`;
-}
-
-// node_modules/@angular/cdk/fesm2022/coercion.mjs
-function coerceBooleanProperty(value) {
-  return value != null && `${value}` !== "false";
-}
-
-// node_modules/@angular/cdk/fesm2022/test-environment-34eef1ee.mjs
-function _isTestEnvironment() {
-  return (
-    // @ts-ignore
-    typeof __karma__ !== "undefined" && !!__karma__ || // @ts-ignore
-    typeof jasmine !== "undefined" && !!jasmine || // @ts-ignore
-    typeof jest !== "undefined" && !!jest || // @ts-ignore
-    typeof Mocha !== "undefined" && !!Mocha
-  );
-}
-
 // node_modules/@angular/cdk/fesm2022/platform.mjs
 var PlatformModule = class _PlatformModule {
   static ɵfac = function PlatformModule_Factory(__ngFactoryType__) {
@@ -91,9 +67,6 @@ function getSupportedInputTypes() {
 }
 
 export {
-  coerceCssPixelValue,
-  coerceBooleanProperty,
-  _isTestEnvironment,
   getSupportedInputTypes
 };
-//# sourceMappingURL=chunk-ED4B2QSW.js.map
+//# sourceMappingURL=chunk-NB6JQRZW.js.map

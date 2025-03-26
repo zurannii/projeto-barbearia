@@ -4935,6 +4935,7 @@ export {
   HashLocationStrategy,
   Location,
   parseCookieValue,
+  NgClass,
   NgTemplateOutlet,
   CommonModule,
   PLATFORM_BROWSER_ID,
@@ -4952,4 +4953,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-LNFNEYZ2.js.map
+//# sourceMappingURL=chunk-WOJLYAZF.js.map

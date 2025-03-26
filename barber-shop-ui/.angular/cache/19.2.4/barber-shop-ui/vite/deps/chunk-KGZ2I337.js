@@ -1,18 +1,18 @@
 import {
-  BidiModule
-} from "./chunk-KU7MYNJR.js";
-import {
   _CdkPrivateStyleLoader,
   _bindEventWithOptions
 } from "./chunk-AG2FD2SX.js";
 import {
+  BidiModule
+} from "./chunk-2HSPQZK6.js";
+import {
   Platform,
   coerceElement,
   coerceNumberProperty
-} from "./chunk-B3YKO34R.js";
+} from "./chunk-K25KVHGH.js";
 import {
   DOCUMENT
-} from "./chunk-LNFNEYZ2.js";
+} from "./chunk-WOJLYAZF.js";
 import {
   APP_ID,
   CSP_NONCE,
@@ -2400,6 +2400,19 @@ var FocusKeyManager = class extends ListKeyManager {
   }
 };
 
+// node_modules/@angular/cdk/fesm2022/activedescendant-key-manager-1351a9d3.mjs
+var ActiveDescendantKeyManager = class extends ListKeyManager {
+  setActiveItem(index) {
+    if (this.activeItem) {
+      this.activeItem.setInactiveStyles();
+    }
+    super.setActiveItem(index);
+    if (this.activeItem) {
+      this.activeItem.setActiveStyles();
+    }
+  }
+};
+
 // node_modules/@angular/cdk/fesm2022/observable-97c0792c.mjs
 function coerceObservable(data) {
   if (!isObservable(data)) {
@@ -3129,16 +3142,26 @@ export {
   UP_ARROW,
   RIGHT_ARROW,
   DOWN_ARROW,
+  A,
+  _getFocusedElementPierceShadowDom,
   _getEventTarget,
   normalizePassiveListenerOptions,
   FocusMonitor,
+  _VisuallyHiddenLoader,
   coerceArray,
   BreakpointObserver,
   ObserversModule,
+  InteractivityChecker,
+  FocusTrapFactory,
   LiveAnnouncer,
+  A11yModule,
   _IdGenerator,
   hasModifierKey,
+  ActiveDescendantKeyManager,
   FocusKeyManager,
+  addAriaReferencedId,
+  removeAriaReferencedId,
+  AriaDescriber,
   MatCommonModule
 };
-//# sourceMappingURL=chunk-ODD24YIC.js.map
+//# sourceMappingURL=chunk-KGZ2I337.js.map

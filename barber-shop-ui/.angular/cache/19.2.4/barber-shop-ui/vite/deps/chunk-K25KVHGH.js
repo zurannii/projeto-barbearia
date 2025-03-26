@@ -1,6 +1,6 @@
 import {
   isPlatformBrowser
-} from "./chunk-LNFNEYZ2.js";
+} from "./chunk-WOJLYAZF.js";
 import {
   ElementRef,
   Injectable,
@@ -9,20 +9,6 @@ import {
   setClassMetadata,
   ɵɵdefineInjectable
 } from "./chunk-N2APCJKI.js";
-
-// node_modules/@angular/cdk/fesm2022/element-705567fe.mjs
-function coerceNumberProperty(value, fallbackValue = 0) {
-  if (_isNumberValue(value)) {
-    return Number(value);
-  }
-  return arguments.length === 2 ? fallbackValue : 0;
-}
-function _isNumberValue(value) {
-  return !isNaN(parseFloat(value)) && !isNaN(Number(value));
-}
-function coerceElement(elementOrRef) {
-  return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
-}
 
 // node_modules/@angular/cdk/fesm2022/platform-610a08ae.mjs
 var hasV8BreakIterator;
@@ -85,9 +71,24 @@ var Platform = class _Platform {
   }], () => [], null);
 })();
 
+// node_modules/@angular/cdk/fesm2022/element-705567fe.mjs
+function coerceNumberProperty(value, fallbackValue = 0) {
+  if (_isNumberValue(value)) {
+    return Number(value);
+  }
+  return arguments.length === 2 ? fallbackValue : 0;
+}
+function _isNumberValue(value) {
+  return !isNaN(parseFloat(value)) && !isNaN(Number(value));
+}
+function coerceElement(elementOrRef) {
+  return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;
+}
+
 export {
+  Platform,
   coerceNumberProperty,
-  coerceElement,
-  Platform
+  _isNumberValue,
+  coerceElement
 };
-//# sourceMappingURL=chunk-B3YKO34R.js.map
+//# sourceMappingURL=chunk-K25KVHGH.js.map
