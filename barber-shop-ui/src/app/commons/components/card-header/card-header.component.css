@@ -1,17 +1,49 @@
-.title-center{
+/* Estilo principal do mat-card */
+.card-tile {
+    background-color: transparent; 
+    color: #F5F5F5; 
+    border: 1px solid #DAA520; 
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin: 15px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-tile:hover {
+
+    border-color: #cc6804; 
+    
+}
+
+
+.title-center {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #1b1b1b; 
+    padding: 15px;
+    border-radius: 10px 10px 0 0; 
 }
 
-.mat-mdc-card-title {
-    font-size: 2rem;
+
+mat-card-title {
+    font-size: 1.8rem; 
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #DAA520;
 }
 
-.card-title {
-    padding-top: 2rem;
-    padding-bottom: 3rem;
-    margin-bottom: 3rem;
+
+ng-content {
+    font-size: 1rem;
+    color: #D3D3D3;
 }
 
+.mat-icon {  
+    color: #DAA520;
+    height: 24px;
+    width: 24px;
+    
+}

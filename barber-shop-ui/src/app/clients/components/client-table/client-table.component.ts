@@ -15,6 +15,7 @@ import { CustomPaginator } from './custom-paginator';
 
 @Component({
   selector: 'app-client-table',
+  standalone: true,
   imports: [MatTableModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatTooltipModule],
   templateUrl: './client-table.component.html',
   styleUrl: './client-table.component.css',

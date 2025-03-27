@@ -1,10 +1,10 @@
-export interface ScheduleAppointementMonthModel {
-    year: number
+export interface ScheduleAppointmentMonthResponse {
+    year: number,
     month: number
-    scheduledAppointments: ClientScheduleAppointmentModel[]
+    scheduledAppointments: ClientSchedulesAppointmentResponse []
 }
 
-export interface ClientScheduleAppointmentModel {
+export interface ClientSchedulesAppointmentResponse {
     id: number
     day: number
     startAt: Date
@@ -13,13 +13,43 @@ export interface ClientScheduleAppointmentModel {
     clientName: string
 }
 
-export interface SaveScheduleModel {
-    startAt?: Date
-    endAt?: Date
-    clientId?: number
+export interface SaveScheduleResponse {
+    id: number
+    startAt: Date
+    endAt: Date
+    clientId: number
+
 }
 
-export interface SelectClientModel {
-    id: number
-    name: string
+export interface SaveScheduleRequest {
+    startAt: Date
+    endAt: Date
+    clientId: number
+
 }
+
+// Export the required models to make them available for import in other files.
+
+export interface ClientScheduleAppointmentModel {
+    id: string;
+    clientId: string;
+    startAt: Date;
+    endAt: Date;
+  }
+  
+  export interface SaveScheduleModel {
+    clientId: string;
+    startAt: Date;
+    endAt: Date;
+  }
+  
+  export interface ScheduleAppointementMonthModel {
+    year: number;
+    month: number;
+    appointments: ClientScheduleAppointmentModel[];
+  }
+  
+  export interface SelectClientModel {
+    id: string;
+    name: string;
+  }

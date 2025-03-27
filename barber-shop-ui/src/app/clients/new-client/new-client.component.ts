@@ -11,6 +11,7 @@ import { ClientFormComponent } from '../components/client-form/client-form.compo
 
 @Component({
   selector: 'app-new-client',
+  standalone: true,
   imports: [ClientFormComponent],
   templateUrl: './new-client.component.html',
   styleUrls: ['./new-client.component.css'],

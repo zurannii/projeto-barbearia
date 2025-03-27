@@ -22,6 +22,7 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-schedule-calendar',
+  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -38,7 +39,7 @@ import { Subscription } from 'rxjs';
     MatSelectModule,
   ],
   templateUrl: './schedule-calendar.component.html',
-  styleUrl: './schedule-calendar.component.scss',
+  styleUrl: './schedule-calendar.component.css',
   providers: [
     provideNativeDateAdapter(),
     {

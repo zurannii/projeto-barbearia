@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-clients',
+  standalone: true,
   imports: [ClientTableComponent],
   templateUrl: './list-clients.component.html',
   styleUrls: ['./list-clients.component.css'],

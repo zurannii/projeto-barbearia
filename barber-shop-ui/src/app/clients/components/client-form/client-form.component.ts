@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-client-form',
+  standalone: true,
   imports: [
     FormsModule,
     MatInputModule,
